@@ -1,56 +1,33 @@
-// ========== BAGIAN HASIL PROFIL RISIKO ==========
-const hasil = localStorage.getItem("profilRisiko");
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("quizForm");
 
-if (document.getElementById("hasilRisiko")) {
-  document.getElementById("hasilRisiko").innerText = hasil || "Belum mengisi kuis.";
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const usia = document.querySelector('input[name="usia"]:checked')?.value;
+      const risiko = document.querySelector('input[name="risiko"]:checked')?.value;
 
-  const rekomendasiBox = document.createElement("div");
-  rekomendasiBox.className = "result-box";
-  document.querySelector(".hasil-ulang").appendChild(rekomendasiBox);
-
-  if (hasil?.includes("Konservatif")) {
-    rekomendasiBox.innerHTML = `
-      <h3>Rekomendasi Investasi:</h3>
-      <ul>
-        <li>✅ Sukuk Ritel</li>
-        <li>✅ Deposito Syariah</li>
-      </ul>`;
-  } else if (hasil?.includes("Moderat")) {
-    rekomendasiBox.innerHTML = `
-      <h3>Rekomendasi Investasi:</h3>
-      <ul>
-        <li>✅ Reksa Dana Syariah Campuran</li>
-        <li>✅ Sukuk Korporasi</li>
-        <li>✅ Sukuk Pemerintah</li>
-      </ul>`;
-  } else if (hasil?.includes("Agresif")) {
-    rekomendasiBox.innerHTML = `
-      <h3>Rekomendasi Investasi:</h3>
-      <ul>
-        <li>✅ Saham Syariah</li>
-        <li>✅ Reksa Dana Saham Syariah</li>
-        <li>✅ ETF Syariah</li>
-      </ul>`;
+      localStorage.setItem("usia", usia);
+      localStorage.setItem("risiko", risiko);
+      window.location.href = "result.html";
+    });
   }
-}
 
-// ========== BAGIAN FORM NAMA & EMAIL ==========
-if (document.getElementById("userForm")) {
-  // Saat submit form
-  document.getElementById("userForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    const nama = document.getElementById("nama").value;
-    const email = document.getElementById("email").value;
+  const hasil = document.getElementById("hasilRisiko");
+  const rekom = document.getElementById("rekomendasiInvestasi");
 
-    localStorage.setItem("userNama", nama);
-    localStorage.setItem("userEmail", email);
+  if (hasil && rekom) {
+    const usia = localStorage.getItem("usia");
+    const risiko = localStorage.getItem("risiko");
 
-    document.getElementById("ucapanSelamat").innerText = `Terima kasih sudah bergabung, ${nama}!`;
-  });
+    hasil.textContent = `Usia: ${usia}, Risiko: ${risiko}`;
 
-  // Saat halaman dibuka kembali
-  const namaTersimpan = localStorage.getItem("userNama");
-  if (namaTersimpan) {
-    document.getElementById("ucapanSelamat").innerText = `Selamat datang kembali, ${namaTersimpan}!`;
+    if (risiko === "rendah") {
+      rekom.textContent = "Rekomendasi: Deposito Syariah & Sukuk Ritel";
+    } else if (risiko === "sedang") {
+      rekom.textContent = "Rekomendasi: Reksadana Syariah Pasar Uang & Pendapatan Tetap";
+    } else {
+      rekom.textContent = "Rekomendasi: Reksadana Syariah Saham & Saham Syariah";
+    }
   }
-}
+});
