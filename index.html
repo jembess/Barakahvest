@@ -7,10 +7,21 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <header class="navbar">
+    <div class="logo">BarakahVest</div>
+    <nav class="nav-links">
+      <a href="index.html">Beranda</a>
+      <a href="quiz.html">Kuis</a>
+      <a href="edukasi.html">Edukasi</a>
+      <a href="about.html">Tentang Kami</a>
+    </nav>
+  </header>
+
   <section class="hero">
     <h1>BarakahVest</h1>
     <p>Robo-advisor Syariah untuk Masa Depan Keuanganmu</p>
-    <button onclick="location.href='quiz.html'">Mulai Kuis</button>
+    <button class="cta-button" onclick="location.href='quiz.html'">Mulai Kuis</button>
   </section>
 
   <section class="features">
@@ -19,17 +30,65 @@
     <div class="feature-box">🛡️ Aman & Transparan</div>
   </section>
 
-  <section class="cta">
-    <h2>Siap memulai perjalanan keuanganmu?</h2>
-    <button onclick="location.href='quiz.html'">Gabung Sekarang</button>
-    <a href="about.html">
-      <button>Tentang Kami</button>
-    </a>
-
+  <section class="container">
+    <h2>Artikel Edukasi</h2>
+    <div id="daftarArtikel" class="grid"></div>
   </section>
 
+  <section class="cta">
+    <h2>Siap memulai perjalanan keuanganmu?</h2>
+
+    <form id="userForm">
+      <label for="nama">Nama:</label><br>
+      <input type="text" id="nama" name="nama" required><br><br>
+
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+
+      <input type="submit" value="Gabung Sekarang">
+    </form>
+  </section>
+
+  <div id="ucapanSelamat" class="result-box"></div>
+
   <footer>
-    &copy; 2025 BarakahVest
+    &copy; 2025 BarakahVest | <a href="about.html">Tentang Kami</a>
   </footer>
+
+  <script src="script.js" defer></script>
+  <script src="data-artikel.js"></script>
+  <script>
+    // Menampilkan daftar artikel dari data-artikel.js
+    const container = document.getElementById("daftarArtikel");
+
+    artikelList.forEach(artikel => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <h3>${artikel.judul}</h3>
+        <p>${artikel.ringkasan}</p>
+        <a href="artikel.html?id=${artikel.id}">Baca selengkapnya →</a>
+      `;
+      container.appendChild(card);
+    });
+
+    // Handle form user
+    document.getElementById("userForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const nama = document.getElementById("nama").value;
+      const email = document.getElementById("email").value;
+
+      localStorage.setItem("userNama", nama);
+      localStorage.setItem("userEmail", email);
+
+      document.getElementById("ucapanSelamat").innerHTML = `
+        <p>Selamat bergabung, <strong>${nama}</strong>! Kami akan menghubungi kamu di <em>${email}</em>.</p>
+      `;
+
+      this.reset();
+    });
+  </script>
+
 </body>
 </html>
+

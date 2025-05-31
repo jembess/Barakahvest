@@ -1,232 +1,416 @@
-/* ==== RESET DASAR ==== */
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden;
-}
-
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
+/* Reset dasar */
+* {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: #1f2937;
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
+  background-color: #f9fafb;
   line-height: 1.6;
 }
 
-/* ==== LAYOUT GLOBAL ==== */
-section,
-.hero,
-.features,
-.cta,
-footer {
-  width: 100%;
+
+/* Navbar */
+.navbar {
+  background-color: #047857;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
 }
 
-/* ==== HERO SECTION ==== */
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.nav-links a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Hero */
 .hero {
-  background: linear-gradient(to right, #d1fae5, #bbf7d0);
-  padding: 80px 20px;
   text-align: center;
+  padding: 60px 20px 40px;
+  background-color: #ecfdf5;
+  background-image: url('Asset/hero-bg.png'); /* Sesuaikan nama file dan path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 255, 255, 0.7); /* Sesuaikan transparansi */
+  z-index: 0;
+}
+
+.hero * {
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1 {
-  font-size: 40px;
+  font-size: 36px;
   color: #047857;
   margin-bottom: 10px;
 }
 
 .hero p {
   font-size: 18px;
-  margin-bottom: 20px;
   color: #374151;
+  margin-bottom: 20px;
 }
 
-.hero button {
+/* CTA Button */
+.cta-button {
   background-color: #10b981;
   color: white;
-  border: none;
   padding: 12px 24px;
-  font-size: 16px;
+  border: none;
   border-radius: 8px;
+  font-size: 16px;
   cursor: pointer;
-  transition: transform 0.3s, background-color 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
-.hero button:hover {
-  transform: scale(1.05);
+.cta-button:hover {
   background-color: #059669;
 }
 
-/* ==== FITUR SECTION ==== */
+/* Features */
 .features {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  padding: 60px 20px;
-  background-color: #ecfdf5;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
 }
 
 .feature-box {
-  background-color: #10b981;
-  color: white;
-  padding: 30px 20px;
-  border-radius: 16px;
-  width: 220px;
+  background-color: white;
+  border: 1px solid #d1d5db;
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 180px;
+  font-weight: 500;
+}
+
+/* Artikel */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.container h2 {
   text-align: center;
-  font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s, background-color 0.3s;
-}
-
-.feature-box:hover {
-  transform: scale(1.05);
-  background-color: #059669;
-}
-
-/* ==== CTA SECTION ==== */
-.cta {
-  background-color: #fef9c3;
-  text-align: center;
-  padding: 60px 20px;
-}
-
-.cta h2 {
-  font-size: 24px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
   margin-bottom: 20px;
-  color: #1f2937;
 }
 
-.cta button {
-  padding: 12px 24px;
-  background-color: #facc15;
-  color: #111827;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.3s, background-color 0.3s;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
 }
 
-.cta button:hover {
-  transform: scale(1.05);
-  background-color: #eab308;
-}
-
-.cta a:last-child button {
-  background-color: white;
-  color: #facc15;
-  border: 2px solid #facc15;
-}
-
-.cta a:last-child button:hover {
-  background-color: #fef08a;
-  color: #111827;
-}
-
-/* ==== FOOTER ==== */
-footer {
-  background-color: #10b981;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  font-size: 14px;
-}
-
-/* ==== RESULT BOX ==== */
-.result-box {
+.card {
   background-color: white;
   padding: 20px;
-  margin: 20px auto;
-  width: 90%;
-  max-width: 500px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-/* ==== LINK FIX (Garis Bawah) ==== */
-.about-container a {
+.card h3 {
+  color: #047857;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.card a {
+  color: #10b981;
+  font-weight: 500;
   text-decoration: none;
 }
 
-/* ==== GLOBAL BUTTON STYLE ==== */
-button {
-  font-family: inherit;
+.cta-button {
+  background-color: #10b981;
+  color: white !important; /* <-- ini penting */
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
 }
 
-/* ==== RESPONSIVE UNTUK MOBILE & TABLET ==== */
-@media (max-width: 768px) {
-  body {
-    padding: 0px;
+
+/* Form */
+.cta {
+  text-align: center;
+  background-color: #f0fdf4;
+  padding: 40px 20px;
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+}
+
+input[type="submit"] {
+  width: 100%;
+  background-color: #10b981;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #059669;
+}
+
+/* Ucapan selamat */
+.result-box {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ecfdf5;
+  border-left: 5px solid #10b981;
+  color: #065f46;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  background-color: #f3f4f6;
+  margin-top: 40px;
+}
+
+footer a {
+  color: #047857;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Animasi hover tombol dan link */
+.cta-button,
+input[type="submit"],
+.nav-links a,
+.card a {
+  transition: all 0.3s ease;
+}
+
+
+/* Efek hover untuk link navigasi */
+.nav-links a:hover {
+  color: #d1fae5;
+  transform: scale(1.05);
+}
+
+/* Efek hover untuk link di dalam card */
+.card a:hover {
+  color: #059669;
+  text-decoration: underline;
+}
+
+/* Efek card saat disentuh */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
+}
+
+
+
+
+.konten-isi {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #374151;
+  margin-top: 20px;
+}
+
+
+.quiz-container {
+  max-width: 600px;
+  margin: 60px auto;
+  background-color: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.quiz-group {
+  margin-bottom: 25px;
+}
+
+.quiz-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #374151;
+}
+
+.quiz-group input[type="radio"] {
+  margin-right: 10px;
+}
+
+
+
+.about-container h2 {
+  color: #047857;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.about-container p {
+  margin-bottom: 20px;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  background-color: #f3f4f6;
+  margin-top: 40px;
+  display: block; /* pastikan tidak dipengaruhi flex */
+}
+
+
+.result-container {
+  max-width: 600px;
+  margin: 60px auto;
+  background-color: white;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center; /* Tambahkan ini */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+
+.article-content {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 1.5em;
+  line-height: 1.6;
+}
+.article-title {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #2f855a;    
+  margin-bottom: 0.75em;
+}
+
+
+
+.section-title {
+  color: #2f855a;
+  font-size: 1.25rem;
+  margin: 1.5em 0 0.5em;
+  text-align: left;
+}
+
+.intro, .conclusion {
+  margin-bottom: 1em;
+}
+
+.conclusion {
+    font-size: 1.25rem;    /* atau 1.5rem untuk lebih besar */
+    font-weight: 600;
+    margin: 1.5em 0 0.5em;
+    line-height: 1.4;
   }
 
-  .hero {
-    padding: 60px 20px;
-  }
+.principles-list,
+.benefits-list,
+.examples-list {
+  margin-left: 1.25em;
+  margin-bottom: 1em;
+}
+.highlight {
+  background: #f0f9f4;
+  padding: 0.5em;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 0.5em;
+}
+.cta-button {
+  display: inline-block;
+  margin-top: 1.5em;
+  padding: 0.75em 1.25em;
+  background: #2f855a;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+}
 
-  .hero h1 {
-    font-size: 28px;
-  }
-
-  .hero p {
-    font-size: 16px;
-  }
-
-  .hero button {
-    width: 100%;
-  }
-
-  .features {
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    padding: 40px 15px;
-  }
-
-  .feature-box {
-    width: 100%;
-    max-width: 300px;
-    padding: 20px;
-    font-size: 16px;
-  }
-
-  .cta h2 {
-    font-size: 20px;
-  }
-
-  .cta {
-    padding: 40px 15px;
-  }
-
-  .cta button {
-    width: 100%;
-    margin: 10px 0;
-  }
-
-  footer {
-    font-size: 12px;
-    padding: 15px;
-  }
-
-  .result-container,
-  .quiz-container,
-  .about-container {
-    margin: 40px 10px;
-    padding: 30px 20px;
-  }
-
-  .result-box {
-    width: 100%;
-    margin: 15px 0;
-  }
+.principles-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+.principles-table th,
+.principles-table td {
+  border: 1px solid #e2e8f0;
+  padding: 0.75em;
+  text-align: left;
+}
+.principles-table th {
+  background-color: #f0f9f4;
+  font-weight: 600;
+}
+.benefits-list li,
+.examples-list li {
+  margin-bottom: 0.5em;
 }
 
