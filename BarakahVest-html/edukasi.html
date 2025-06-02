@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BarakahVest – Edukasi</title>
+  <link rel="stylesheet" href="../styles/style.css" />
+</head>
+  <body>
+    <header class="navbar">
+      <div class="logo">BarakahVest</div>
+      <nav class="nav-links">
+        <a href="index.html">Beranda</a>
+        <a href="quiz.html">Kuis</a>
+        <a href="edukasi.html">Edukasi</a>
+        <a href="about.html">Tentang Kami</a>
+      </nav>
+
+    </header>
+
+    <section class="hero">
+      <h1>Edukasi Investasi Syariah</h1>
+      <p>Belajar investasi halal yang mudah dan sesuai syariat</p>
+    </section>
+
+    <main class="container">
+      <h2>Artikel Edukasi</h2>
+      <div id="daftarArtikel" class="grid"></div>
+    </main>
+
+    <footer>
+      &copy; 2025 BarakahVest | <a href="about.html">Tentang Kami</a>
+    </footer>
+
+    <script src="data-artikel.js" defer></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        const container = document.getElementById("daftarArtikel");
+
+        artikelList.forEach(artikel => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `
+            <h3>${artikel.judul}</h3>
+            <p>${artikel.ringkasan}</p>
+            <a href="artikel.html?id=${artikel.id}">Baca selengkapnya →</a>
+          `;
+          container.appendChild(card);
+        });
+      });
+    </script>
+
+  </body>
+
+</html>
+
